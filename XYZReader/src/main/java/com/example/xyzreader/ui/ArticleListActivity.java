@@ -94,6 +94,8 @@ public class ArticleListActivity extends AppCompatActivity implements
             if (UpdaterService.BROADCAST_ACTION_STATE_CHANGE.equals(intent.getAction())) {
 
                 if (intent.getBooleanExtra(UpdaterService.EXTRA_NO_INTERNET_SNACKBAR, false)) {
+                    //this will set refresher to false & animation stops
+                    updateRefreshingUI();
                     Snackbar snackbar = Snackbar
                             .make(articleListCoordinatorLayout, "No internet connection!", Snackbar.LENGTH_LONG)
                             .setAction("RETRY", new View.OnClickListener() {
