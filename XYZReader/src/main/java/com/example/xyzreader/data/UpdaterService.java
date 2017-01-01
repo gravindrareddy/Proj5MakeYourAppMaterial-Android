@@ -44,7 +44,6 @@ public class UpdaterService extends IntentService {
             Log.w(TAG, "Not online, not refreshing.");
             sendStickyBroadcast(
                     new Intent(BROADCAST_ACTION_STATE_CHANGE).putExtra(EXTRA_NO_INTERNET_SNACKBAR, true));
-
             return;
         }
 

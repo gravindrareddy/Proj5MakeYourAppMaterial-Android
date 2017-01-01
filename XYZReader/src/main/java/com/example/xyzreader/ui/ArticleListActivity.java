@@ -51,32 +51,25 @@ public class ArticleListActivity extends AppCompatActivity implements
         getLoaderManager().initLoader(0, null, this);
         if (savedInstanceState == null) {
             refresh();
+
         }
+
+
+        mSwipeRefreshLayout.setOnRefreshListener(
+                new SwipeRefreshLayout.OnRefreshListener()
+
+                {
+                    @Override
+                    public void onRefresh() {
+                        refresh();
+                    }
+                });
     }
 
     private void refresh() {
         Intent mIntent = new Intent(this, UpdaterService.class);
         startService(new Intent(this, UpdaterService.class));
     }
-
-    /*
- * Sets up a SwipeRefreshLayout.OnRefreshListener that is invoked when the user
- * performs a swipe-to-refresh gesture.
- */
-
-//    mSwipeRefreshLayout.setOnRefreshListener(
-//            new SwipeRefreshLayout.OnRefreshListener()
-//
-//    {
-//        @Override
-//        public void onRefresh () {
-//        Log.i(LOG_TAG, "onRefresh called from SwipeRefreshLayout");
-//
-//        // This method performs the actual data-refresh operation.
-//        // The method calls setRefreshing(false) when it's finished.
-//        myUpdateOperation();
-//    }
-//    }   );
 
 
     @Override
@@ -106,6 +99,7 @@ public class ArticleListActivity extends AppCompatActivity implements
                             .setAction("RETRY", new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
+                                    refresh();
                                 }
                             });
 
