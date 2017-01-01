@@ -7,15 +7,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.text.format.DateUtils;
-import android.util.TypedValue;
-import android.view.MenuItem;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -31,36 +32,55 @@ import com.example.xyzreader.data.UpdaterService;
  * touched, lead to a {@link ArticleDetailActivity} representing item details. On tablets, the
  * activity presents a grid of items as cards.
  */
-public class ArticleListActivity extends ActionBarActivity implements
+public class ArticleListActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor> {
 
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
+    private CoordinatorLayout articleListCoordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_article_list);
-
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-
-
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
-
+        articleListCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.articleListCoordinatorLayout);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         getLoaderManager().initLoader(0, null, this);
-
         if (savedInstanceState == null) {
             refresh();
         }
     }
 
     private void refresh() {
+        Intent mIntent = new Intent(this, UpdaterService.class);
         startService(new Intent(this, UpdaterService.class));
     }
 
+    /*
+ * Sets up a SwipeRefreshLayout.OnRefreshListener that is invoked when the user
+ * performs a swipe-to-refresh gesture.
+ */
+
+//    mSwipeRefreshLayout.setOnRefreshListener(
+//            new SwipeRefreshLayout.OnRefreshListener()
+//
+//    {
+//        @Override
+//        public void onRefresh () {
+//        Log.i(LOG_TAG, "onRefresh called from SwipeRefreshLayout");
+//
+//        // This method performs the actual data-refresh operation.
+//        // The method calls setRefreshing(false) when it's finished.
+//        myUpdateOperation();
+//    }
+//    }   );
+
+
     @Override
+
     protected void onStart() {
         super.onStart();
         registerReceiver(mRefreshingReceiver,
@@ -79,6 +99,22 @@ public class ArticleListActivity extends ActionBarActivity implements
         @Override
         public void onReceive(Context context, Intent intent) {
             if (UpdaterService.BROADCAST_ACTION_STATE_CHANGE.equals(intent.getAction())) {
+
+                if (intent.getBooleanExtra(UpdaterService.EXTRA_NO_INTERNET_SNACKBAR, false)) {
+                    Snackbar snackbar = Snackbar
+                            .make(articleListCoordinatorLayout, "No internet connection!", Snackbar.LENGTH_LONG)
+                            .setAction("RETRY", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                }
+                            });
+
+                    // Changing message text color
+                    snackbar.setActionTextColor(Color.RED);
+                    snackbar.show();
+                    return;
+                }
+
                 mIsRefreshing = intent.getBooleanExtra(UpdaterService.EXTRA_REFRESHING, false);
                 updateRefreshingUI();
             }
