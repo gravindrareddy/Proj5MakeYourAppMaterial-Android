@@ -1,4 +1,4 @@
-package com.example.xyzreader.remote;
+package redgun.example.materialdesign.remote;
 
 import android.util.Log;
 

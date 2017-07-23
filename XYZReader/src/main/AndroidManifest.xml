@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.xyzreader"
+    package="redgun.example.materialdesign"
     android:versionCode="1"
     android:versionName="1.0">
 
@@ -12,10 +12,10 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Bacon">
+        android:theme="@style/AppTheme">
 
         <activity
-            android:name=".ui.ArticleListActivity"
+            android:name="redgun.example.materialdesign.ui.ArticleListActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,23 +24,23 @@
         </activity>
 
         <activity
-            android:name=".ui.ArticleDetailActivity"
-            android:parentActivityName=".ui.ArticleListActivity">
+            android:name="redgun.example.materialdesign.ui.ArticleDetailActivity"
+            android:parentActivityName="redgun.example.materialdesign.ui.ArticleListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="vnd.android.cursor.item/vnd.com.example.xyzreader.items" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.redgun.example.materialdesign.items" />
             </intent-filter>
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.ArticleListActivity" />
+                android:value="redgun.example.materialdesign.ui.ArticleListActivity" />
         </activity>
 
-        <service android:name=".data.UpdaterService"
+        <service android:name="redgun.example.materialdesign.data.UpdaterService"
             android:exported="false" />
 
-        <provider android:name=".data.ItemsProvider"
-            android:authorities="com.example.xyzreader"
+        <provider android:name="redgun.example.materialdesign.data.ItemsProvider"
+            android:authorities="redgun.example.materialdesign"
             android:exported="false" />
 
     </application>

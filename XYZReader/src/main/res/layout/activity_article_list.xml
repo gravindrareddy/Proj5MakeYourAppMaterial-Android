@@ -19,8 +19,7 @@
             android:layout_gravity="bottom"
             android:layout_marginLeft="@dimen/list_toolbar_side_margin"
             android:layout_marginRight="@dimen/list_toolbar_side_margin"
-            android:background="@color/theme_primary_dark"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:background="?android:colorPrimary">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -35,17 +34,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/toolbar"
-            android:background="@color/theme_primary_support">
+            android:background="?colorPrimary">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
-                android:paddingBottom="@dimen/list_top_bottom_margin"
-                android:paddingLeft="@dimen/list_side_margin"
-                android:paddingRight="@dimen/list_side_margin"
-                android:paddingTop="@dimen/list_top_bottom_margin"
                 android:scrollbarStyle="outsideOverlay" />
         </android.support.v4.widget.SwipeRefreshLayout>
 

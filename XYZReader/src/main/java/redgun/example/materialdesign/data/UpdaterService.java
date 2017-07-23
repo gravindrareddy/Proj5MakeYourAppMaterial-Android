@@ -1,4 +1,4 @@
-package com.example.xyzreader.data;
+package redgun.example.materialdesign.data;
 
 import android.app.IntentService;
 import android.content.ContentProviderOperation;
@@ -12,7 +12,7 @@ import android.os.RemoteException;
 import android.text.format.Time;
 import android.util.Log;
 
-import com.example.xyzreader.remote.RemoteEndpointUtil;
+import redgun.example.materialdesign.remote.RemoteEndpointUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,11 +24,11 @@ public class UpdaterService extends IntentService {
     private static final String TAG = "UpdaterService";
 
     public static final String BROADCAST_ACTION_STATE_CHANGE
-            = "com.example.xyzreader.intent.action.STATE_CHANGE";
+            = "redgun.example.materialdesign.intent.action.STATE_CHANGE";
     public static final String EXTRA_REFRESHING
-            = "com.example.xyzreader.intent.extra.REFRESHING";
+            = "redgun.example.materialdesign.intent.extra.REFRESHING";
     public static final String EXTRA_NO_INTERNET_SNACKBAR
-            = "com.example.xyzreader.intent.extra.NO_INTERNET";
+            = "redgun.example.materialdesign.intent.extra.NO_INTERNET";
 
     public UpdaterService() {
         super(TAG);

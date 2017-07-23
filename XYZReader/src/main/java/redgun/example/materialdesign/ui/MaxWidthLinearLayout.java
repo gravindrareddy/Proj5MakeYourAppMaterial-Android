@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.xyzreader.ui;
+package redgun.example.materialdesign.ui;
 
 import android.content.Context;
 import android.content.res.TypedArray;

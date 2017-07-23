@@ -1,4 +1,4 @@
-package com.example.xyzreader.ui;
+package redgun.example.materialdesign.ui;
 
 import android.app.LoaderManager;
 import android.content.BroadcastReceiver;
@@ -16,15 +16,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.xyzreader.R;
-import com.example.xyzreader.data.ArticleLoader;
-import com.example.xyzreader.data.ItemsContract;
-import com.example.xyzreader.data.UpdaterService;
+import redgun.example.materialdesign.R;
+import redgun.example.materialdesign.data.ArticleLoader;
+import redgun.example.materialdesign.data.ItemsContract;
+import redgun.example.materialdesign.data.UpdaterService;
 
 /**
  * An activity representing a list of Articles. This activity has different presentations for

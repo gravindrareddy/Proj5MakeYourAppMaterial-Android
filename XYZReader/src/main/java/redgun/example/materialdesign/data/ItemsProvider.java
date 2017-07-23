@@ -1,5 +1,5 @@
 
-package com.example.xyzreader.data;
+package redgun.example.materialdesign.data;
 
 import android.content.ContentProvider;
 import android.content.ContentProviderOperation;

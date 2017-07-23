@@ -1,4 +1,4 @@
-package com.example.xyzreader.data;
+package redgun.example.materialdesign.data;
 
 import android.content.Context;
 import android.content.CursorLoader;

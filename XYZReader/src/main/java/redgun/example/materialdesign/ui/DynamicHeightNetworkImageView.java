@@ -1,4 +1,4 @@
-package com.example.xyzreader.ui;
+package redgun.example.materialdesign.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;

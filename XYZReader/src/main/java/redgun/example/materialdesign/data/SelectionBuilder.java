@@ -20,7 +20,7 @@
  * -Changed package name
  */
 
-package com.example.xyzreader.data;
+package redgun.example.materialdesign.data;
 
 import java.util.ArrayList;
 import java.util.Arrays;
