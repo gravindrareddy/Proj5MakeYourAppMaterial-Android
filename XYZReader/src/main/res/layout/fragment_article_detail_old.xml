@@ -4,27 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <redgun.example.materialdesign.ui.ObservableScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.v7.widget.GridLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:columnCount="1">
-
-            <android.support.v7.widget.Space
-                app:layout_columnSpan="1"
-                app:layout_columnWeight="1" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <FrameLayout
                 android:id="@+id/photo_container"
-                android:background="@color/photo_placeholder"
-                app:layout_columnSpan="1"
-                android:layout_marginTop="?attr/actionBarSize"
-                app:layout_columnWeight="1">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/photo_placeholder">
                 <!--suppress AndroidLintContentDescription -->
                 <ImageView
                     android:id="@+id/photo"
@@ -38,45 +32,47 @@
                     android:background="@drawable/scrim" />
             </FrameLayout>
 
-
-            <LinearLayout
-                android:id="@+id/meta_bar"
-                android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
-                android:background="#333"
-                android:orientation="vertical"
-                android:paddingBottom="@dimen/detail_metabar_vert_padding"
-                android:paddingLeft="@dimen/detail_inner_horiz_margin"
-                android:paddingRight="@dimen/detail_inner_horiz_margin"
-                android:paddingTop="@dimen/detail_metabar_vert_padding"
-                app:layout_columnSpan="1"
-                app:layout_columnWeight="1">
-
-                <TextView
-                    android:id="@+id/article_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-condensed"
-                    android:lineSpacingMultiplier="0.9"
-                    android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:textColor="#fff"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/article_byline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="#8fff" />
-            </LinearLayout>
-
             <redgun.example.materialdesign.ui.MaxWidthLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:background="#fff"
                 android:elevation="2dp"
                 android:maxWidth="@dimen/detail_card_max_width"
-                android:orientation="vertical"
-                app:layout_gravity="center_horizontal">
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/meta_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="@dimen/detail_metabar_vert_padding"
+                    android:background="#333"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/detail_metabar_vert_padding"
+                    android:paddingLeft="@dimen/detail_inner_horiz_margin"
+                    android:paddingRight="@dimen/detail_inner_horiz_margin"
+                    android:paddingTop="@dimen/detail_metabar_vert_padding">
+
+                    <TextView
+                        android:id="@+id/article_title"
+                        style="?android:attr/textAppearanceLarge"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-condensed"
+                        android:lineSpacingMultiplier="0.9"
+                        android:paddingBottom="@dimen/detail_metabar_title_bottom_padding"
+                        android:textColor="#fff"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/article_byline"
+                        style="?android:attr/textAppearanceSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#8fff" />
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/article_body"
@@ -87,12 +83,12 @@
                     android:layout_marginRight="@dimen/detail_inner_horiz_margin"
                     android:lineSpacingMultiplier="@fraction/detail_body_line_spacing_multiplier"
                     android:paddingBottom="@dimen/detail_body_bottom_margin"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@color/list_text_light_color"
-                    android:textColorLink="?colorAccent" />
+                    android:textColorLink="?colorAccent"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
             </redgun.example.materialdesign.ui.MaxWidthLinearLayout>
-        </android.support.v7.widget.GridLayout>
+        </LinearLayout>
     </redgun.example.materialdesign.ui.ObservableScrollView>
 
     <ImageButton

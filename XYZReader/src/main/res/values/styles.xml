@@ -22,10 +22,21 @@
         <item name="android:colorPrimaryDark">@color/primary_dark</item>
         <item name="android:colorAccent">@color/accent</item>
         <item name="android:colorPressedHighlight">@color/pressed_highlight</item>
+        <item name="android:toolbarStyle">@style/Toolbar</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
     <style name="AppTheme.Detail">
         <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="Toolbar" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">?attr/colorPrimary</item>
+        <item name="popupTheme">@style/Theme.AppCompat.Light</item>
+    </style>
+
+    <style name="titleTextStyle">
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Subhead</item>
     </style>
 
 </resources>
