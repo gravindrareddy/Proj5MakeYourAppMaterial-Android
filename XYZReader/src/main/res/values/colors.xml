@@ -16,7 +16,7 @@
 -->
 
 <resources>
-    <color name="photo_placeholder">#ccc</color>
+    <color name="photo_placeholder">#fdf</color>
     <!--ToDo change these colors & use them primarily-->
     <color name="primary">#004d40</color>
     <color name="primary_dark">#00251a</color>

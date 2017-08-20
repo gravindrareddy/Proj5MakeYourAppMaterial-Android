@@ -12,7 +12,7 @@
 
         <!--suppress AndroidLintContentDescription -->
         <redgun.example.materialdesign.ui.DynamicHeightNetworkImageView
-            android:id="@+id/thumbnail"
+            android:id="@+id/article_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/photo_placeholder"
