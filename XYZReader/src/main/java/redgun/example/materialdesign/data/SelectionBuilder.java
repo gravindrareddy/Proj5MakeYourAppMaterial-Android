@@ -86,7 +86,6 @@ public class SelectionBuilder {
                 mSelectionArgs.add(arg);
             }
         }
-
         return this;
     }
 

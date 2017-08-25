@@ -20,12 +20,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import redgun.example.materialdesign.R;
 import redgun.example.materialdesign.data.ArticleLoader;
+import redgun.example.materialdesign.data.ItemsContract;
 import redgun.example.materialdesign.data.UpdaterService;
 
 /**
@@ -67,6 +69,9 @@ public class ArticleListActivity extends AppCompatActivity implements
                         refresh();
                     }
                 });
+
+        Explode explode = new Explode();
+        getWindow().setExitTransition(explode);
     }
 
     private void refresh() {
@@ -166,7 +171,9 @@ public class ArticleListActivity extends AppCompatActivity implements
                 public void onClick(View view) {
                     //Bundle b = ActivityOptions.makeSceneTransitionAnimation(mContext,vh.thumbnailView,vh.thumbnailView.getTransitionName());
                     Bundle b = new Bundle();
-                    b.putInt("selected_article_id", 1);
+                    b.putLong("selected_article_id", getItemId(vh.getAdapterPosition()));
+//                    startActivity(new Intent(Intent.ACTION_VIEW,
+//                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
                     Intent intent = new Intent(getApplicationContext(), ArticleDetailActivity.class);
                     intent.putExtra("bundle", b);
                     startActivity(intent);

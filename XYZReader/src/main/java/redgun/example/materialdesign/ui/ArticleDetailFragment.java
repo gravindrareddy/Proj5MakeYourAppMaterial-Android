@@ -82,7 +82,7 @@ public class ArticleDetailFragment extends Fragment implements
         super.onCreate(savedInstanceState);
 
         if (getArguments().containsKey("selected_article_id")) {
-            mItemId = getArguments().getInt("selected_article_id");
+            mItemId = getArguments().getLong("selected_article_id");
         }
 
 
@@ -96,7 +96,7 @@ public class ArticleDetailFragment extends Fragment implements
         // the fragment's onCreate may cause the same LoaderManager to be dealt to multiple
         // fragments because their mIndex is -1 (haven't been added to the activity yet). Thus,
         // we do this in onActivityCreated.
-        //getLoaderManager().initLoader(0, null, this);
+        getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
@@ -132,8 +132,6 @@ public class ArticleDetailFragment extends Fragment implements
         article_detail_collapsetoolbarlayout.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
 
 
-
-
         mRootView.findViewById(R.id.article_detail_share_fab).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,9 +142,12 @@ public class ArticleDetailFragment extends Fragment implements
             }
         });
 
+    }
 
+    void populateViews(){
 
         if (mCursor != null) {
+            mCursor.moveToFirst();
             mRootView.setAlpha(0);
             mRootView.setVisibility(View.VISIBLE);
             mRootView.animate().alpha(1);
@@ -186,7 +187,8 @@ public class ArticleDetailFragment extends Fragment implements
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        return ArticleLoader.newInstanceForItemId(getActivity(), mItemId);
+        return ArticleLoader.newAllArticlesInstance(getActivity());
+        //return ArticleLoader.newInstanceForItemId(getActivity(), mItemId);
     }
 
 
@@ -200,13 +202,14 @@ public class ArticleDetailFragment extends Fragment implements
         }
 
         mCursor = cursor;
+        populateViews();
         if (mCursor != null && !mCursor.moveToFirst()) {
             Log.e(TAG, "Error reading item detail cursor");
             mCursor.close();
             mCursor = null;
         }
 
-        bindViews();
+
     }
 
     @Override
